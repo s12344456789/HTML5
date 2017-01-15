@@ -1,0 +1,109 @@
+<!DOCTYPE html> 
+<head>
+  <title>HTML5-4105029011</title>
+  <meta name="description" content="HTML5-4105029011" />
+  <meta name="keywords" content="HTML5-4105029011" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/image_slide.js"></script>
+  <!--Import Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+	  <script src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyDYvdvwb6-13cF8_2yaB9r8WmStpIBXuV8" type="text/javascript"></script>
+        <script type="text/javascript"> 
+	
+    function load() {
+      if (GBrowserIsCompatible()) {
+        var map = new GMap2(document.getElementById("map"));
+        map.setCenter(new GLatLng(24.119857, 120.674302), 15); //改成你要的經緯度,後面的13是預設顯示大小
+        map.addControl(new GSmallMapControl()); //小型地圖控制項
+        map.addControl(new GMapTypeControl()); //轉換類型地圖控制項
+                map.enableGoogleBar(); //左下Google地圖搜尋
+        var marker = new GMarker(new GLatLng(24.119857, 120.674302)); //建立標籤的經緯度
+        map.addOverlay(marker); //顯示標籤
+        marker.openInfoWindowHtml("中興大學圖書館"); //顯示對話框及文字
+
+
+      }
+    }
+	var panorama;
+	function initialize() {
+	  panorama = new google.maps.StreetViewPanorama(
+      document.getElementById('street-view'),
+      {
+        position: {lat: 24.119857, lng: 120.674302},
+        pov: {heading: 165, pitch: 0},
+        zoom: 1
+      });
+}
+    </script>
+   
+</head>
+
+<body onload="load()" onunload="GUnload()">
+  <div id="main">
+    <div id="header">
+	  <div id="banner">
+	    <div id="welcome">
+	      <h1>文　學　天　地</h1>
+	    </div><!--close welcome-->
+
+	  </div><!--close banner-->
+    </div><!--close header-->
+
+	<div id="menubar">
+      <ul id="menu">
+        <li class="current"><a href="index.html">主頁</a></li>
+        <li><a href="video.html">影片推薦</a></li>
+        <li><a href="writings.html">好文分享</a></li>
+        <li><a href="map.html">走入文學</a></li>
+      </ul>
+    </div><!--close menubar-->	
+	
+<div id="site_content">		
+
+	  <div class="sidebar_container">       
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>個人格言</h2>
+            <p>「筆為吾家，字是我身。」</p>
+          </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->     		
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>喜好文學</h2>
+            <p>以金庸、古龍為主，多讀武俠小說，期盼未來能寫出獨樹一幟的武俠作品。</p>         
+		  </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->
+				
+        <div class="sidebar">
+          <div class="sidebar_item">
+            <h2>網站理念</h2>
+			<p>推薦好的文學相關資料～</p>
+          </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->
+       </div><!--close sidebar_container-->	 
+	 
+	  <div id="content">
+	   
+	<div id="site_content">		
+<h2>閱讀地點</h2> 
+<font size='3'><p>如果你也想要踏入文學領域就快到中興大學圖書館吧～～</p>
+<p>（把右下角的小黃人拉上去可以開啟街景服務哦！）</p></font>
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+ <div id="map" style="width: 600px; height: 500px"></div> <!--此為地圖顯示大小-->
+  </div><!--close main-->
+ 
+  
+</body>
+</html>

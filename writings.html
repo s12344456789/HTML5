@@ -1,0 +1,120 @@
+<!DOCTYPE html> 
+<head>
+  <title>HTML5-4105029011</title>
+  <meta name="description" content="HTML5-4105029011" />
+  <meta name="keywords" content="HTML5-4105029011" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/image_slide.js"></script>
+  
+  <!--Import Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  
+	  
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+	  <div id="banner">
+	    <div id="welcome">
+	      <h1>文　學　天　地</h1>
+	    </div><!--close welcome-->
+
+	  </div><!--close banner-->
+    </div><!--close header-->
+
+	<div id="menubar">
+      <ul id="menu">
+        <li class="current"><a href="index.html">主頁</a></li>
+        <li><a href="video.html">影片推薦</a></li>
+        <li><a href="writings.html">好文分享</a></li>
+        <li><a href="map.html">走入文學</a></li>
+      </ul>
+    </div><!--close menubar-->	
+    
+	<div id="site_content">		
+
+	  <div class="sidebar_container">       
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>個人格言</h2>
+            <p>「筆為吾家，字是我身。」</p>
+          </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->     		
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>喜好文學</h2>
+            <p>以金庸、古龍為主，多讀武俠小說，期盼未來能寫出獨樹一幟的武俠作品。</p>         
+		  </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->
+				
+        <div class="sidebar">
+          <div class="sidebar_item">
+            <h2>網站理念</h2>
+			<p>推薦好的文學相關資料～</p>
+          </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->
+       </div><!--close sidebar_container-->	 
+
+	      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+	  <h2>痞客邦的熱門連載小說～</h2>
+	<script>
+	
+	var xmlhttp = new XMLHttpRequest();
+	var url = "https://emma.pixnet.cc/mainpage/blog/categories/hot/13?page=1&per_page=10&api_version=2&format=json";
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var myArr = JSON.parse(xmlhttp.responseText);
+			myFunction(myArr);
+		}
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+	function myFunction(arr) {
+		var data = arr.articles;
+		var out = "";
+		var i;
+		for (i = 0; i < data.length; i++) {
+			
+			out += 	'<li class="collection-item avatar"><img src="'+data[i].thumb+ '"alt="" class="circle">\
+				<span class="title">'+'<font color="blue">'+data[i].title+'</font>'+'</span>'+'<p>'+data[i].summary+'<br>';
+				
+				
+				if ( data[i].tags.length != 0 )
+				{
+				out +='<b>'+'Tags: '+'</b>';
+				for (j = 0; j < data[i].tags.length; j++) {
+					
+					out += data[i].tags[j].tag + ', '};
+				}	
+			out +='</p>\<a href="'+data[i].link+'" class="secondary-content"><i class="material-icons">grade</i></a></li>';
+			
+			
+		}
+		document.getElementById("pixnet-stuff").innerHTML = out;
+	}
+	</script>
+	  
+	
+	<ul class="collection" id="pixnet-stuff">			
+	</ul>  
+	 
+
+	</div><!--close site_content--> 
+       
+ 
+  </div><!--close main-->
+  
+
+</body>
+</html>

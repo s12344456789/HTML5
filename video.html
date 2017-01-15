@@ -1,0 +1,109 @@
+<!DOCTYPE html> 
+<head>
+  <title>HTML5-4105029011</title>
+  <meta name="description" content="HTML5-4105029011" />
+  <meta name="keywords" content="HTML5-4105029011" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/image_slide.js"></script>
+  <!--Import Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+  <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+      <!--Import materialize.css-->
+      <link href="css/materialize.min.css" media="screen,projection" rel="stylesheet" type="text/css"></link>
+
+      <!--Let browser know website is optimized for mobile-->
+  
+<title>Youtube Data API</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+	  <div id="banner">
+	    <div id="welcome">
+	      <h1>文　學　天　地</h1>
+	    </div><!--close welcome-->
+
+	  </div><!--close banner-->
+    </div><!--close header-->
+
+	<div id="menubar">
+      <ul id="menu">
+        <li class="current"><a href="index.html">主頁</a></li>
+        <li><a href="video.html">影片推薦</a></li>
+        <li><a href="writings.html">好文分享</a></li>
+        <li><a href="map.html">走入文學</a></li>
+      </ul>
+    </div><!--close menubar-->	
+    
+	<div id="site_content">		
+
+	  <div class="sidebar_container">       
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>個人格言</h2>
+            <p>「筆為吾家，字是我身。」</p>
+          </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->     		
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>喜好文學</h2>
+            <p>以金庸、古龍為主，多讀武俠小說，期盼未來能寫出獨樹一幟的武俠作品。</p>         
+		  </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->
+				
+        <div class="sidebar">
+          <div class="sidebar_item">
+            <h2>網站理念</h2>
+			<p>推薦好的文學相關資料～</p>
+          </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->
+       </div><!--close sidebar_container-->	 
+
+	 
+			<h2>武俠音樂</h2>
+			<p>許多影視劇源自於小說，透過影音媒介也讓更多人能感受到文學的魅力。基於私心對武俠的熱愛，這裡就盤點幾首金庸劇的歌曲～</p>
+
+<div id="VideoThumbs"><!-- 這裡會產生YouTube Thumbs列出影片 --></div>
+	
+	<script type="text/javascript">
+		var apiKey = "AIzaSyBaGYWV_n_feFf-1fLjW188-Av7ADi8kL8";
+		function getVideos(pid, apiKey) {
+			// PlaylistItems: list 語法參見 https://developers.google.com/youtube/v3/docs/playlistItems/list
+			$.get("https://www.googleapis.com/youtube/v3/playlistItems", {
+				part: "snippet,contentDetails",
+				maxResults: 50,
+				playlistId: pid,
+				key: apiKey},
+				function (data) {
+					// 傳回值參見 https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation
+					$.each(data.items, function (i, item) {
+						var str = '<div style="float:left;font-size:small;margin:5px;">';
+						str += '<a href="https://youtu.be/' + item.snippet.resourceId.videoId + '" target="_blank"><img src="' + item.snippet.thumbnails.medium.url + '" /><br />' + item.snippet.title + '</a><br />';
+						if (item.contentDetails.note !== undefined) str += '<a href="' + item.contentDetails.note + '" target="_blank">延伸閱讀</a><br />';
+						str += '</div>';
+						document.getElementById("VideoThumbs").innerHTML += str;
+					})
+				}
+			);
+		}
+		
+		getVideos("PLUSrSZCf9WlHIptf1BrSOWTS7P3L5fUIX", apiKey)	// @武俠劇音樂
+		
+	</script>	
+  
+   
+
+  </div><!--close main-->
+ 
+</body>
+</html>
